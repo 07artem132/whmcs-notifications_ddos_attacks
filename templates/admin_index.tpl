@@ -62,10 +62,12 @@
                     "columnDefs": [{
                         "targets": [6],
                         "data": null,
-                        "defaultContent": "<a href=\"#\" data-id=\"{$id}\"\n" +
-                            "                           title=\"Нажмите для удаления\">\n" +
-                            "                            <img src=\"/"+window.NotificationsDDoSAttacks.admin_path+"/images/delete.gif\" border=\"0\" alt=\"удалить\">\n" +
-                            "                        </a>"
+                        "render": function (data, type, row, meta) {
+                            return "<a href=\"addonmodules.php?module=NotificationsDDoSAttacks&action=delete_email&id="+data.id+"\" onclick=\"return window.confirm('Вы точно хотите удалить запись об атаке на ip " + data.ip + " ?');\"\n" +
+                                "                           title=\"Нажмите для удаления\">\n" +
+                                "                            <img src=\"/" + window.NotificationsDDoSAttacks.admin_path + "/images/delete.gif\" border=\"0\" alt=\"удалить\">\n" +
+                                "                        </a>";
+                        }
                     }],
                     "lengthMenu": [
                         [50, 100, 500, 1000, 2000, 3000, 5000],

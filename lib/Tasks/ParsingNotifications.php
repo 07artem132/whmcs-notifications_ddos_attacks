@@ -92,6 +92,7 @@ class ParsingNotifications implements TaskInterfaces
                         if (array_key_exists('clientNotifyEmailTemplate', $settings)) {
                             if ($attack['service_id'] == 0) continue;
                             $service = Service::find($attack['service_id']);
+                            if (!$userNotify->has($service->userid)) continue;
                             $user = Capsule::table("tblclients")->where("id", "=", $service->userid)->first();
                             $emailTemplate = Template::find($settings['clientNotifyEmailTemplate']);
                             if (empty($emailTemplate)) {

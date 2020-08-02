@@ -63,6 +63,9 @@ class GetNotifyApi extends ApiValidatorAbstract implements ApiInterface
     {
         $columns = [
             [
+                'db' => 'id', 'dt' => 'id'
+            ],
+            [
                 'db' => 'ip', 'dt' => 'ip'
             ],
             [

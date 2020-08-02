@@ -66,7 +66,6 @@ class DDosGuardParser implements NotifyDDoSAttackInterface
             $result->where('dedicatedip', '=', $this->getIP($attack))
                 ->orWhere('assignedips', 'LIKE', '%' . $this->getIP($attack) . '%');
         })
-            ->where('domainstatus','=','Active')
             ->first();
 
         if (!empty($service) && Carbon::parse($service->regdate) < Carbon::parse($this->getStart($attack))) {
