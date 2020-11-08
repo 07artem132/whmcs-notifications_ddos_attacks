@@ -96,7 +96,6 @@ class GetClientNotifyApi extends ApiValidatorAbstract implements ApiInterface
                 'db' => 'end', 'dt' => 'end'
             ],
         ];
-
         $this->responseRawData(
             json_encode(
                 DataTablesDatabaseIntegrationController::complex(
@@ -106,7 +105,7 @@ class GetClientNotifyApi extends ApiValidatorAbstract implements ApiInterface
                     'id',
                     $columns,
                     null,
-                   'service_id IN (\''. implode("','", $clientServices->pluck('id')->toArray()).'\') and deleted_at is null'
+                   'service_id IN (\''. implode("','", $clientServices->pluck('id')->toArray()).'\') and deleted_at is null and service_id !=\'0\''
                 )
             )
         );
